@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import {LogoIcon} from "../components/Logo"
-import {MessagesIcon} from "../components/MessagesIcon";
-import {NotificationIcon} from "../components/NotificationIcon";
+import {LogoIcon} from "../icons/Logo"
+import {MessagesIcon} from "../icons/MessagesIcon";
+import {NotificationIcon} from "../icons/NotificationIcon";
 import {Avatar, Badge, makeStyles, Theme} from "@material-ui/core";
 import {deepPurple} from "@material-ui/core/colors";
-import {ArrowDown} from "../components/ArrowDownLogo";
+import {ArrowDown} from "../icons/ArrowDownLogo";
 
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -25,11 +25,11 @@ export const Header = () => {
                     <LogoIcon/>
                 </span>
                 <Logo>LOGO</Logo>
-                <div style={{display: "flex", marginLeft: 62, width: 340, justifyContent: "space-between"}}>
+                <MenuNavbar>
                     <ItemLink><ItemLinkWrapper>Команда</ItemLinkWrapper></ItemLink>
                     <ItemLink><ItemLinkWrapper>Задачи</ItemLinkWrapper></ItemLink>
                     <ItemLink><ItemLinkWrapper>Календарь</ItemLinkWrapper></ItemLink>
-                </div>
+                </MenuNavbar>
             </div>
 
             <div style={{display: "flex", alignItems: "center"}}>
@@ -77,6 +77,8 @@ const ItemLinkWrapper = styled.a`
   color: #fff;
   opacity: 1;
   cursor: pointer;
+  font-family: Inter;
+  font-size: 16px;
 
   //:hover {
   //  background: grey;
@@ -87,6 +89,7 @@ const ItemLinkWrapper = styled.a`
 const ItemLink = styled.div`
   padding: 25px 20px;
   cursor: pointer;
+
   :hover {
     background-color: #FFFFFF1A;
   }
@@ -101,12 +104,22 @@ const MiniAvatarName = styled.span`
   color: #fff;
   opacity: 1;
   font-size: 14px;
+  font-family: Inter;
+  font-size: 14px;
 `
 const MiniAvatarInfo = styled.span`
   opacity: 0.8;
   color: #fff;
   letter-spacing: 0;
+  font-family: Inter;
+  font-size: 12px;
 `
 const ArrowWrapper = styled.span`
   margin: 0 30px 0 10px;
+`
+const MenuNavbar = styled.div`
+  display: flex;
+  margin-left: 62px;
+  width: 340px;
+  justify-content: space-between;
 `
