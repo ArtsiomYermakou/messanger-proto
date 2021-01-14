@@ -20,14 +20,16 @@ export const Header = () => {
     const classes = useStyles();
     return (
         <HeaderWrapper>
-            <div style={{display: "flex", justifyContent: "space-between"}}>
+            <div style={{display: "flex", justifyContent: "space-between", height: "100%", alignItems: "center"}}>
                 <span style={{margin: "0 13px 0 33px"}}>
                     <LogoIcon/>
                 </span>
                 <Logo>LOGO</Logo>
-                <ItemLink style={{marginLeft: 62}}>Команда</ItemLink>
-                <ItemLink style={{margin: "0 40px"}}>Задачи</ItemLink>
-                <ItemLink>Календарь</ItemLink>
+                <div style={{display: "flex", marginLeft: 62, width: 340, justifyContent: "space-between"}}>
+                    <ItemLink><ItemLinkWrapper>Команда</ItemLinkWrapper></ItemLink>
+                    <ItemLink><ItemLinkWrapper>Задачи</ItemLinkWrapper></ItemLink>
+                    <ItemLink><ItemLinkWrapper>Календарь</ItemLinkWrapper></ItemLink>
+                </div>
             </div>
 
             <div style={{display: "flex", alignItems: "center"}}>
@@ -67,16 +69,26 @@ const Logo = styled.span`
   color: #FFFFFF;
   opacity: 1;
   font-size: 28px;
+  font-family: Inter;
+  font-weight: 300;
 `
-const ItemLink = styled.a`
+const ItemLinkWrapper = styled.a`
   letter-spacing: 0;
   color: #fff;
   opacity: 1;
   cursor: pointer;
 
+  //:hover {
+  //  background: grey;
+  //  opacity: 0.7;
+  //}
+`
+
+const ItemLink = styled.div`
+  padding: 25px 20px;
+  cursor: pointer;
   :hover {
-    background: grey;
-    opacity: 0.7;
+    background-color: #FFFFFF1A;
   }
 `
 const MiniAvatarBlock = styled.span`
