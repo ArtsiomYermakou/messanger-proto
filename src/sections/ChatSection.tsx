@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import {Avatar, createStyles, makeStyles, Theme} from "@material-ui/core";
 import {deepPurple} from "@material-ui/core/colors";
@@ -20,11 +20,13 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const ChatSection = () => {
     const classes = useStyles();
+
+    const [messages, setMessages] = useState<Array<string>>([])
+
+    console.log(messages)
     return (
         <MainBlockSection>
             <HeaderChat>
-
-
                 <ChatItem>
                     <Avatar className={classes.blue}><ChildParent>ОЧ</ChildParent></Avatar>
                     <InfoHeaderChat>
@@ -44,7 +46,7 @@ export const ChatSection = () => {
                 </SettingsAndSearchBlock>
             </HeaderChat>
             <IconMessagesSection/>
-            <MessageTypeSection/>
+            <MessageTypeSection arrayMessage={messages} sentMessage={setMessages}/>
         </MainBlockSection>
     )
 }

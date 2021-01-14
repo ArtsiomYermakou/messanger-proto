@@ -9,7 +9,7 @@ import {ChatSection} from "./ChatSection";
 export const Main = () => {
     return (
         <MainWrapper>
-            <div style={{border: "1px solid #1B3A5933", width: 350, height: "93vh"}}>
+            <div style={{border: "1px solid #1B3A5933", width: 350, height: "92.8vh"}}>
                 <div style={{
                     display: "flex",
                     borderBottom: "1px solid #1B3A5933",
