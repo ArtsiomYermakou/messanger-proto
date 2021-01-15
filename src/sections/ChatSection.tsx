@@ -23,7 +23,6 @@ export const ChatSection = () => {
 
     const [messages, setMessages] = useState<Array<string>>([])
 
-    console.log(messages)
     return (
         <MainBlockSection>
             <HeaderChat>
@@ -45,7 +44,7 @@ export const ChatSection = () => {
 
                 </SettingsAndSearchBlock>
             </HeaderChat>
-            <IconMessagesSection/>
+            <IconMessagesSection messages={messages}/>
             <MessageTypeSection arrayMessage={messages} sentMessage={setMessages}/>
         </MainBlockSection>
     )

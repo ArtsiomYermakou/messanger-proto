@@ -10,20 +10,8 @@ export const Main = () => {
     return (
         <MainWrapper>
             <div style={{border: "1px solid #1B3A5933", width: 350, height: "92.8vh"}}>
-                <div style={{
-                    display: "flex",
-                    borderBottom: "1px solid #1B3A5933",
-                    width: 350,
-                    height: 57,
-                    alignItems: "center"
-                }}>
-                    <input placeholder={"Поиск..."} type="text" style={{
-                        border: "none",
-                        outline: "none",
-                        height: 20,
-                        margin: "20px 0 20px 25px",
-                        fontSize: 16
-                    }}/>
+                <SearchBlock>
+                    <InputSearch placeholder={"Поиск..."} type="text"/>
                     <div style={{display: "flex", justifyContent: "space-between", width: 90, alignItems: "center"}}>
                         <SearchItem>
                             <CloseIcon/>
@@ -35,7 +23,7 @@ export const Main = () => {
                             <NewMessageIcon/>
                         </SearchItem>
                     </div>
-                </div>
+                </SearchBlock>
                 <AccordionChats/>
             </div>
             <ChatSection/>
@@ -54,4 +42,18 @@ const Interpreter = styled.span`
   letter-spacing: 1.54px;
   //font-family: Inter;
   font: normal normal bold 11px/14px Inter;
+`
+const InputSearch = styled.input`
+  border: none;
+  outline: none;
+  height: 20px;
+  margin: 20px 0 20px 25px;
+  font-size: 16px;
+`
+const SearchBlock = styled.div`
+  display: flex;
+  border-bottom: 1px solid #1B3A5933;
+  width: 350px;
+  height: 57px;
+  align-items: center;
 `

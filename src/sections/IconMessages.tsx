@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef} from "react";
 import styled from "styled-components";
 import {Avatar, createStyles, makeStyles, Theme} from "@material-ui/core";
 import {deepPurple} from "@material-ui/core/colors";
@@ -17,8 +17,19 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export const IconMessagesSection = () => {
+type IconMessagesSectionPropsType = {
+    messages: Array<string>
+}
+
+export const IconMessagesSection: React.FC<IconMessagesSectionPropsType> = ({messages}) => {
     const classes = useStyles();
+
+    const messagesEndRef = useRef<any>(null)
+
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({behavior: "smooth"})
+    }
+    useEffect(scrollToBottom, [messages]);
 
     return (
         <IconMessages>
@@ -105,14 +116,41 @@ export const IconMessagesSection = () => {
                 </Message>
             </RightMessage>
 
+            {
+                messages.map((m) => {
+                    return (
+                        <RightMessage key={m}>
+                            <Message style={{width: 453}}>
+                                <div style={{position: "absolute", display: "flex"}}>
+                                    <div style={{justifyContent: "flex-end"}}>
+                                        {m}
+                                    </div>
+                                </div>
+                                <WrapperlikesAndTime4>
+                                    <Time>
+                                        14:23
+                                    </Time>
+                                    <div>
+                                        <SentIcon/>
+                                    </div>
+                                </WrapperlikesAndTime4>
+                            </Message>
+                        </RightMessage>
+                    )
+                })
+            }
+
+            <div ref={messagesEndRef}/>
         </IconMessages>
     )
 }
 
 const IconMessages = styled.div`
   background-color: #f5f9fc;
-  height: 100%;
+  max-height: 100%;
+  height: 650px;
   padding: 56px 75px 50px 20px;
+  overflow-y: auto;
 `
 const LeftMessage = styled.div`
   display: flex;

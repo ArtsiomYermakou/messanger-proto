@@ -51,7 +51,7 @@ export const MessageTypeSection: React.FC<MessageTypeSectionPropsType> = ({sentM
 
 const MessageTypeBlock = styled.div`
   display: flex;
-  min-height: 70px;
+  min-height: 65px;
   justify-content: space-between;
   align-items: center;
   padding: 0 30px;

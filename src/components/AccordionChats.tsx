@@ -9,6 +9,7 @@ import {
     Typography
 } from "@material-ui/core";
 import {deepPurple} from "@material-ui/core/colors";
+import {relative} from "path";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -24,8 +25,19 @@ const useStyles = makeStyles((theme: Theme) =>
             color: theme.palette.getContrastText(deepPurple[500]),
             backgroundColor: "#007AF4",
             height: 23,
-            width: 23
+            width: 23,
+            before: {
+                position: "relative"
+            },
+            after:{
+                position: "relative"
+            }
         },
+        bef: {
+            before: {
+                position: "relative"
+            }
+        }
     }),
 );
 
@@ -37,66 +49,41 @@ export const AccordionChats = () => {
                 <Interpreter>ОТДЕЛЫ</Interpreter>
             </div>
 
-
             <div className={classes.root}>
-                <Accordion style={{boxShadow: "none"}}>
+                <Accordion style={{boxShadow: "none"}} expanded={false}>
                     <AccordionSummary style={{padding: 0}}>
                         <Typography style={{boxShadow: "none", display: "flex"}}>
                             <Avatar
                                 className={classes.blue}><ChildParent>P</ChildParent></Avatar><Child>Руководство</Child>
                         </Typography>
                     </AccordionSummary>
-                    {/*<AccordionDetails>*/}
-                    {/*    <Typography style={{boxShadow: "none", display: "flex"}}>*/}
-                    {/*        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,*/}
-                    {/*        sit amet blandit leo lobortis eget.*/}
-                    {/*    </Typography>*/}
-                    {/*</AccordionDetails>*/}
                 </Accordion>
 
-                <Accordion style={{boxShadow: "none"}}>
+                <Accordion style={{boxShadow: "none"}} className={classes.bef} expanded={false}>
                     <AccordionSummary style={{padding: 0}}>
                         <Typography style={{boxShadow: "none", display: "flex"}}>
                             <Avatar
                                 className={classes.blue}><ChildParent>Б</ChildParent></Avatar><Child>Бухгалтерия</Child>
                         </Typography>
                     </AccordionSummary>
-                    {/*<AccordionDetails>*/}
-                    {/*    <Typography style={{boxShadow: "none", display: "flex"}}>*/}
-                    {/*        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,*/}
-                    {/*        sit amet blandit leo lobortis eget.*/}
-                    {/*    </Typography>*/}
-                    {/*</AccordionDetails>*/}
                 </Accordion>
 
-                <Accordion style={{boxShadow: "none"}}>
+                <Accordion style={{boxShadow: "none"}} expanded={false}>
                     <AccordionSummary style={{padding: 0}}>
                         <Typography style={{boxShadow: "none", display: "flex"}}>
                             <Avatar
                                 className={classes.blue}><ChildParent>М</ChildParent></Avatar><Child>Маркетинг</Child>
                         </Typography>
                     </AccordionSummary>
-                    {/*<AccordionDetails>*/}
-                    {/*    <Typography style={{boxShadow: "none", display: "flex"}}>*/}
-                    {/*        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,*/}
-                    {/*        sit amet blandit leo lobortis eget.*/}
-                    {/*    </Typography>*/}
-                    {/*</AccordionDetails>*/}
                 </Accordion>
 
-                <Accordion style={{boxShadow: "none"}}>
+                <Accordion style={{boxShadow: "none"}} expanded={false}>
                     <AccordionSummary style={{padding: 0}}>
                         <Typography style={{boxShadow: "none", display: "flex"}}>
                             <Avatar
                                 className={classes.blue}><ChildParent>A</ChildParent></Avatar><Child>Аналитика</Child>
                         </Typography>
                     </AccordionSummary>
-                    {/*<AccordionDetails>*/}
-                    {/*    <Typography style={{boxShadow: "none", display: "flex"}}>*/}
-                    {/*        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,*/}
-                    {/*        sit amet blandit leo lobortis eget.*/}
-                    {/*    </Typography>*/}
-                    {/*</AccordionDetails>*/}
                 </Accordion>
 
                 <Accordion style={{boxShadow: "none"}}>
@@ -197,7 +184,7 @@ const ChildRecent = styled.span`
 `
 const RecentChats = styled.div`
   margin: 28px 0 12px 0;
-  
+
 `
 const TitleRecent = styled.span`
   font-family: Inter;
