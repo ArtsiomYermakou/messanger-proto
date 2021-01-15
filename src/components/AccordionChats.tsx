@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import {
     Accordion,
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
             before: {
                 position: "relative"
             },
-            after:{
+            after: {
                 position: "relative"
             }
         },
@@ -41,8 +41,32 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-export const AccordionChats = () => {
+type AccordionChatsPropsType = {
+    sections: any
+}
+
+
+const MyAccordion = styled(Accordion)`
+  margin: 0;
+
+  &&:before {
+    position: relative;
+  }
+`
+const MyAccordionSummary = styled(AccordionSummary)`
+  min-height: 100% !important;
+  margin: 0 ;
+
+  && .Mui-expanded {
+    min-height: 100% ;
+    margin: 0 ;
+  }
+`
+
+export const AccordionChats: React.FC<AccordionChatsPropsType> = ({sections}) => {
     const classes = useStyles();
+
+
     return (
         <>
             <div style={{marginLeft: 30, marginTop: 20, marginBottom: 12}}>
@@ -50,79 +74,32 @@ export const AccordionChats = () => {
             </div>
 
             <div className={classes.root}>
-                <Accordion style={{boxShadow: "none"}} expanded={false}>
-                    <AccordionSummary style={{padding: 0}}>
-                        <Typography style={{boxShadow: "none", display: "flex"}}>
-                            <Avatar
-                                className={classes.blue}><ChildParent>P</ChildParent></Avatar><Child>Руководство</Child>
-                        </Typography>
-                    </AccordionSummary>
-                </Accordion>
+                {sections.map((section: any) => <MyAccordion
+                        // expanded={false}
+                        key={Math.random()}
+                        style={{boxShadow: "none"}}>
+                        <MyAccordionSummary style={{padding: 0}}>
+                            <Typography style={{boxShadow: "none", display: "flex"}}>
+                                <Avatar
+                                    className={classes.blue}><ChildParent>{section.title[0]}</ChildParent></Avatar><Child>{section.title}</Child>
+                            </Typography>
+                        </MyAccordionSummary>
 
-                <Accordion style={{boxShadow: "none"}} className={classes.bef} expanded={false}>
-                    <AccordionSummary style={{padding: 0}}>
-                        <Typography style={{boxShadow: "none", display: "flex"}}>
-                            <Avatar
-                                className={classes.blue}><ChildParent>Б</ChildParent></Avatar><Child>Бухгалтерия</Child>
-                        </Typography>
-                    </AccordionSummary>
-                </Accordion>
+                        <AccordionDetails>
+                            <Typography style={{padding: 0, margin: 0}}>
+                                {section.subTitle && section.subTitle.map((person: any) => <ChatItem key={Math.random()}>
+                                    <Avatar className={classes.blue}><ChildParent>{person.name[0]}</ChildParent>
+                                    </Avatar>
+                                    <Child>{person.name}</Child>
+                                </ChatItem>)
+                                }
+                            </Typography>
+                        </AccordionDetails>
 
-                <Accordion style={{boxShadow: "none"}} expanded={false}>
-                    <AccordionSummary style={{padding: 0}}>
-                        <Typography style={{boxShadow: "none", display: "flex"}}>
-                            <Avatar
-                                className={classes.blue}><ChildParent>М</ChildParent></Avatar><Child>Маркетинг</Child>
-                        </Typography>
-                    </AccordionSummary>
-                </Accordion>
-
-                <Accordion style={{boxShadow: "none"}} expanded={false}>
-                    <AccordionSummary style={{padding: 0}}>
-                        <Typography style={{boxShadow: "none", display: "flex"}}>
-                            <Avatar
-                                className={classes.blue}><ChildParent>A</ChildParent></Avatar><Child>Аналитика</Child>
-                        </Typography>
-                    </AccordionSummary>
-                </Accordion>
-
-                <Accordion style={{boxShadow: "none"}}>
-                    <AccordionSummary style={{padding: 0}}>
-                        <Typography style={{boxShadow: "none", display: "flex"}}>
-                            <Avatar className={classes.blue}><ChildParent>P</ChildParent></Avatar><Child>Разработка и
-                            интеграция</Child>
-                        </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography style={{padding: 0, margin: 0}}>
-                            <ChatItem>
-                                <Avatar className={classes.blue}><ChildParent>P</ChildParent> </Avatar>
-                                <Child>Валерий Алексеев</Child>
-                            </ChatItem>
-
-                            <ChatItem>
-                                <Avatar className={classes.blue}><ChildParent>P</ChildParent></Avatar>
-                                <Child>Алексей Мусаханов</Child>
-                            </ChatItem>
-
-                            <ChatItem>
-                                <Avatar className={classes.blue}><ChildParent>P</ChildParent></Avatar>
-                                <Child>Юлия Дворецкова</Child>
-                            </ChatItem>
-
-                            <ChatItem>
-                                <Avatar className={classes.blue}><ChildParent>P</ChildParent></Avatar>
-                                <Child>Софья Загидулина</Child>
-                            </ChatItem>
-
-                            <ChatItem>
-                                <Avatar className={classes.blue}><ChildParent>P</ChildParent></Avatar>
-                                <Child>Артём Гавриленко</Child>
-                            </ChatItem>
-                        </Typography>
-                    </AccordionDetails>
-                </Accordion>
+                    </MyAccordion>
+                )}
                 <RecentChats>
+
                     <TitleRecent>ПОСЛЕДНИЕ ЧАТЫ</TitleRecent>
 
                     <div style={{display: "flex", padding: "9px 0", cursor: "pointer"}}>

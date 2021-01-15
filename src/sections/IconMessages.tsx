@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 import {Avatar, createStyles, makeStyles, Theme} from "@material-ui/core";
 import {deepPurple} from "@material-ui/core/colors";
@@ -31,6 +31,26 @@ export const IconMessagesSection: React.FC<IconMessagesSectionPropsType> = ({mes
     }
     useEffect(scrollToBottom, [messages]);
 
+    const [firstLike, setFirstLike] = useState(2);
+    const [secondLike, setSecondLike] = useState(1);
+
+    const plusMinusLike1 = () => {
+        if(firstLike === 3){
+            setFirstLike(firstLike => firstLike - 1)
+        }
+        if(firstLike === 2){
+            setFirstLike(firstLike => firstLike + 1)
+        }
+    }
+    const plusMinusLike2 = () => {
+        if(secondLike === 1){
+            setSecondLike(secondLike => secondLike - 1)
+        }
+        if(secondLike === 0){
+            setSecondLike(secondLike => secondLike + 1)
+        }
+    }
+
     return (
         <IconMessages>
             <LeftMessage>
@@ -39,9 +59,9 @@ export const IconMessagesSection: React.FC<IconMessagesSectionPropsType> = ({mes
                     Равным образом дальнейшее развитие различных форм деятельности способствует подготовке и реализации
                     существенных финансовых условий.
                     <WrapperLikesAndTime>
-                        <Likes>
+                        <Likes onClick={plusMinusLike1}>
                             <img style={{marginTop: 1}} src={like} alt="like"/> <span
-                            style={{color: "black", opacity: "unset"}}>2</span>
+                            style={{color: "black", opacity: "unset"}}>{firstLike}</span>
                         </Likes>
                         <Time>
                             14:23
@@ -68,9 +88,9 @@ export const IconMessagesSection: React.FC<IconMessagesSectionPropsType> = ({mes
                         </div>
                     </div>
                     <WrapperlikesAndTime2>
-                        <Likes>
+                        <Likes onClick={plusMinusLike2}>
                             <img style={{marginTop: 1}} src={like} alt="like"/> <span
-                            style={{color: "black", opacity: "unset"}}>1</span>
+                            style={{color: "black", opacity: "unset"}}>{secondLike}</span>
                         </Likes>
                         <Time>
                             14:23

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ChangeEvent, useState} from "react";
 import styled from "styled-components";
 import {CloseIcon} from "../icons/CloseIcon";
 import {SearchIcon} from "../icons/SearchIcon";
@@ -6,12 +6,49 @@ import {NewMessageIcon} from "../icons/NewMessageIcon";
 import {AccordionChats} from "../components/AccordionChats";
 import {ChatSection} from "./ChatSection";
 
+const sections = [
+    {title: "Руководство", subTitle: []},
+    {title: "Бухгалтерия", subTitle: []},
+    {title: "Аналитика", subTitle: []},
+    {
+        title: "Разработка и интеграция", subTitle: [
+            {name: "Валерий Алексеев"},
+            {name: "Алексей Мусаханов"},
+            {name: "Юлия Дворецкова"},
+            {name: "Софья Загидулина"},
+            {name: "Артём Гавриленко"}
+        ]
+    },
+]
+
 export const Main = () => {
+
+    const [search, setSearch] = useState("");
+
+    const searchHandler = (e: ChangeEvent<any>) => {
+        setSearch(e.currentTarget.value)
+    }
+
+    const getFilteredData = () => {
+        if (!search) {
+            return sections
+        }
+        return sections.filter((item: any) => {
+            return item.title.toLowerCase().includes(search.toLowerCase().trim())
+        })
+    }
+
+    const filteredData = getFilteredData()
+
     return (
         <MainWrapper>
             <div style={{border: "1px solid #1B3A5933", width: 350, height: "92.8vh"}}>
                 <SearchBlock>
-                    <InputSearch placeholder={"Поиск..."} type="text"/>
+
+                    <InputSearch value={search}
+                                 onChange={searchHandler}
+                                 placeholder={"Поиск..."} type="text"/>
+
                     <div style={{display: "flex", justifyContent: "space-between", width: 90, alignItems: "center"}}>
                         <SearchItem>
                             <CloseIcon/>
@@ -24,7 +61,7 @@ export const Main = () => {
                         </SearchItem>
                     </div>
                 </SearchBlock>
-                <AccordionChats/>
+                <AccordionChats sections={filteredData}/>
             </div>
             <ChatSection/>
         </MainWrapper>
@@ -36,12 +73,6 @@ const MainWrapper = styled.div`
 `
 const SearchItem = styled.div`
   cursor: pointer;
-`
-const Interpreter = styled.span`
-  font-size: 11px;
-  letter-spacing: 1.54px;
-  //font-family: Inter;
-  font: normal normal bold 11px/14px Inter;
 `
 const InputSearch = styled.input`
   border: none;

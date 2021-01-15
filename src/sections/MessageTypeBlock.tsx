@@ -36,7 +36,7 @@ export const MessageTypeSection: React.FC<MessageTypeSectionPropsType> = ({sentM
                 onChange={(e: any) => setMessage(e.currentTarget.value)}
                 placeholder={"Написать сообщение..."}/>
 
-            <div style={{display: "flex", alignItems: "center", width: 195, justifyContent: "space-between"}}>
+            <WrapperFunction>
                 <InputFunction>
                     <SmileIcon/>
                 </InputFunction>
@@ -44,7 +44,7 @@ export const MessageTypeSection: React.FC<MessageTypeSectionPropsType> = ({sentM
                     <ClipIcon/>
                 </InputFunction>
                 <ButtonSend onClick={sendMassageButton}>Отправить</ButtonSend>
-            </div>
+            </WrapperFunction>
         </MessageTypeBlock>
     )
 }
@@ -84,4 +84,10 @@ const ButtonSend = styled.button`
     background-color: #00677e;
     transition: 0.2s;
   }
+`
+const WrapperFunction = styled.div`
+  display: flex;
+  align-items: center;
+  width: 195px;
+  justify-content: space-between;
 `
