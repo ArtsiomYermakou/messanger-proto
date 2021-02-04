@@ -55,17 +55,16 @@ const MyAccordion = styled(Accordion)`
 `
 const MyAccordionSummary = styled(AccordionSummary)`
   min-height: 100% !important;
-  margin: 0 ;
+  margin: 0;
 
   && .Mui-expanded {
-    min-height: 100% ;
-    margin: 0 ;
+    min-height: 100%;
+    margin: 0;
   }
 `
 
 export const AccordionChats: React.FC<AccordionChatsPropsType> = ({sections}) => {
     const classes = useStyles();
-
 
     return (
         <>
