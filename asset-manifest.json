@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/messanger-proto/static/css/main.82261c43.chunk.css",
-    "main.js": "/messanger-proto/static/js/main.a5fc2d2c.chunk.js",
-    "main.js.map": "/messanger-proto/static/js/main.a5fc2d2c.chunk.js.map",
+    "main.css": "/messanger-proto/static/css/main.cb6bd0df.chunk.css",
+    "main.js": "/messanger-proto/static/js/main.32e3f0cd.chunk.js",
+    "main.js.map": "/messanger-proto/static/js/main.32e3f0cd.chunk.js.map",
     "runtime-main.js": "/messanger-proto/static/js/runtime-main.d8c509ff.js",
     "runtime-main.js.map": "/messanger-proto/static/js/runtime-main.d8c509ff.js.map",
     "static/js/2.7274e7fe.chunk.js": "/messanger-proto/static/js/2.7274e7fe.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.98e86220.chunk.js": "/messanger-proto/static/js/3.98e86220.chunk.js",
     "static/js/3.98e86220.chunk.js.map": "/messanger-proto/static/js/3.98e86220.chunk.js.map",
     "index.html": "/messanger-proto/index.html",
-    "static/css/main.82261c43.chunk.css.map": "/messanger-proto/static/css/main.82261c43.chunk.css.map",
+    "static/css/main.cb6bd0df.chunk.css.map": "/messanger-proto/static/css/main.cb6bd0df.chunk.css.map",
     "static/js/2.7274e7fe.chunk.js.LICENSE.txt": "/messanger-proto/static/js/2.7274e7fe.chunk.js.LICENSE.txt",
     "static/media/index.css": "/messanger-proto/static/media/Inter-Thin.f9420abc.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.d8c509ff.js",
     "static/js/2.7274e7fe.chunk.js",
-    "static/css/main.82261c43.chunk.css",
-    "static/js/main.a5fc2d2c.chunk.js"
+    "static/css/main.cb6bd0df.chunk.css",
+    "static/js/main.32e3f0cd.chunk.js"
   ]
 }
